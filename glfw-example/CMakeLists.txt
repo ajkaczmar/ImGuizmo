@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.5.1)
+
+set(CMAKE_CXX_STANDARD 17)
+
+project(glfw-example)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "Build the GLFW example programs")
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "Build the GLFW test programs")
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "Build the GLFW documentation")
+set(GLFW_INSTALL OFF CACHE BOOL "Generate installation target")
+add_subdirectory(glfw)
+include_directories(${PROJECT_SOURCE_DIR})
+include_directories("glfw/deps") # for glad
+include_directories("glfw/include")
+include_directories("thirdparty")
+include_directories("../")
+add_executable(${PROJECT_NAME} main.cpp ../GraphEditor.cpp ../ImCurveEdit.cpp ../ImGradient.cpp ../ImGuizmo.cpp ../ImSequencer.cpp ./thirdparty/imgui_impl_opengl3.cpp ./thirdparty/imgui_impl_glfw.cpp ./thirdparty/imgui_widgets.cpp ./thirdparty/imgui_tables.cpp ./thirdparty/imgui_draw.cpp ./thirdparty/imgui.cpp)
+if (MSVC)
+    add_definitions( "-D _CRT_SECURE_NO_WARNINGS" )
+endif()
+#if (UNIX)
+#    add_definitions( "-std=c99" )
+#endif()
+target_link_libraries(${PROJECT_NAME} glfw ${GLFW_LIBRARIES})

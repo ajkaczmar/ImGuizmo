@@ -1,0 +1,5 @@
+CMakeFiles/*
+Debug/*
+x64/*
+.vs/*
+glfw-example.dir/*

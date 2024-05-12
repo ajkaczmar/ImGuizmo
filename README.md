@@ -1,3 +1,5 @@
+This rep contains ImGuizmo with GLFW project example.
+
 # ImGuizmo
 
 Latest stable tagged version is 1.83. Current master version is 1.84 WIP.
